@@ -7,13 +7,13 @@ navbar {
   padding-top: 1em;
 }
 
-.navbar-logo {
+.navbar-llinks {
   font-size: 24px;
   font-family: var(--link-font);
   color: var(--main-font-color);
 }
 
-.navbar-logo:hover {
+.navbar-llinks:hover {
   color: white;
 }
 
