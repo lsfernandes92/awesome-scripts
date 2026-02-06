@@ -21,8 +21,19 @@
         </a>
         <div class="divider"></div>
         <div class="faq">
+          <p>
+            These scripts aim to automate tasks and set shortcuts whether for productivity or fun.
+            <br>
+            <br>
+            These scripts are like executables that you can run from the terminal by typing the script name.
+            <br>
+            <br>
+            To make things easier, here, the terms *script*, *executable*, and *binary* mean the same thing.
+            <br>
+            <br>
+          </p>
           <h1>FAQ</h1>
-          <h2>>_ What's a terminal script?</h2>
+          <h2>>_ What's a script?</h2>
           <blockquote>
             It's a file containing a series of terminal *commands* that your shell can execute.
           </blockquote>
@@ -30,7 +41,7 @@
           </br>
           <h2>>_ What's a shell? Which is the most common?</h2>
           <blockquote>
-            It's a software that *interprets* cli commands. 
+            It's a software that *interprets* terminal commands. 
             </br>
             You can use multiple shells.
             </br>
@@ -44,7 +55,7 @@
           <blockquote>
             Stands for *bourne again shell*.
             </br>
-            A software to interpret cli commands. 
+            A software to interpret terminal commands. 
             </br>
             It's also an extended version of the *unix bourne shell (sh)*.
             </br>
@@ -53,7 +64,7 @@
             </br>
             (+) *Popularity*
             </br>
-            (+) *Default* shell in many linux distros
+            (+) *Default* shell in many Linux distros
           </blockquote>
           </br>
           </br>
@@ -67,6 +78,58 @@
           </blockquote>
           </br>
           </br>
+          <h2>>_ Which shebang should you use?</h2>
+          <blockquote>
+            Although, I see the shebang line more as an *indication* for the user who will run the script.
+            </br>
+            </br>
+            I recommend using `#!/usr/bin/env <INTERPRETER>` because it's portable.
+            </br>
+            The *env* command exists on Unix-like systems.
+            </br>
+            It's a utility program that manages environment variables, finds and execute programs using $PATH.
+            </br>
+            It depends on your *$PATH*.
+            </br>
+            </br>
+            Alternatively, use the fixed path `#!/bin/bash` when you need the system bash and want to avoid $PATH manipulation.
+            </br>
+            This works on both MacOS and Linux. 
+          </blockquote>
+          </br>
+          </br>
+          <h2>>_ Where to store system-wide scripts?</h2>
+          <blockquote>
+            I recommend that you use `/usr/local/bin/` because it's the most common location for executables that aren't managed by your package manager.
+            </br>
+            Additionally, it's in the default $PATH.
+            </br>
+            </br>
+            Alternatively, for user-specific scripts use `~/.local/bin` (you may need to add this to your $PATH).
+            </br>
+            </br>
+            You can also store it somewhere else and symlink to `/usr/local/bin/`.
+            </br>
+            In the end, it's totally up to your *preferences*.
+          </blockquote>
+          </br>
+          </br>
+          <h2>>_ When using rbenv, can I store my script in the shim folder?</h2>
+          <blockquote>
+            You can do that, but I don't recommend it.
+            </br>
+            Each ruby version managed by rbenv has its own `<PATH_TO_SHIM_DIR>/bin` folder, so a script might not be available for your current ruby version unless you set it up.
+          </blockquote>
+          </br>
+          </br>
+          <h2>>_ Can I save my scripts without file extension?</h2>
+          <blockquote>
+            Yes, the file extension it's purely informational.
+            </br>
+            Actually, the *shebang* at the beginning of a file is what determines which interpreter to use.
+          </blockquote>
+          </br>
+          </br>
           <h2>>_ So, this is basicaly a commandlinefu.com clone?</h2>
           <blockquote>
             Yes!
@@ -76,6 +139,8 @@
             <a href="https://www.reddit.com/r/commandline/comments/1gvsbiy/comment/ly68zm8/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button">I swear! 😅</a>
           </blockquote>
         </div>
+        </br>
+        </br>
       </main>
     </div>
 

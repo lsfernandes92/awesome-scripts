@@ -65,12 +65,17 @@ Main container
 
 .faq blockquote { 
   font-size: 24px;
-  color: var(--main-font-color);
-  border-left: var(--main-font-color) solid;
+  border-left: solid;
   padding-left: 1em;
 }
 
 .faq a {
   color: var(--main-font-color);
   text-decoration: underline;
+}
+
+.faq p {
+  font-family: var(--main-font);
+  color: var(--main-font-color);
+  font-size: 24px;
 }

@@ -50,7 +50,8 @@ const links = () => {
   githubLink.classList.add("footer-link")
   githubLink.textContent = "GITHUB"
 
-  supportLink.href = "https://ko-fi.com/variosonrails"
+  // supportLink.href = "https://ko-fi.com/variosonrails"
+  supportLink.href = "https://buymeacoffee.com/jaggiesweekly"
   supportLink.target = "_blank"
   supportLink.classList.add("footer-link")
   supportLink.textContent = "SUPPORT ME"
