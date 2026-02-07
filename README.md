@@ -1,6 +1,6 @@
 # >_ Awesome Scripts
 
-This is modest collection of terminal **scripts** I've written. Built with **HTML** + plain **JS** and **CSS**.
+This website contains a modest collection of terminal **scripts** I've written. Built with **HTML** + plain **JS** and **CSS**.
 
 These scripts aim to **automate** tasks and set shortcuts whether for productivity or fun. They are like **executables** that you can run from the terminal by typing the script name.
 
