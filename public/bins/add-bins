@@ -2,41 +2,76 @@
 #
 # Make individual bin executable system-wide.
 #
-# This means that the given binaries will get added to your `$PATH` and be made
-# available everywhere.
-# By doing this, the binary will be added as a "shim" in your rbenv directory,
-# so **you need to have rbenv installed before using this.**
+# This means the binary will be added to `/usr/local/bin`, which is in your
+# `$PATH` by default. Anything in your $PATH is available from anywhere in your
+# system.
 #
+# Multiple binaries can be added at once. For this, please list them separated
+# by a single space.
+# 
+# IMPORTANT!
+# Don't forget to change the `BINS_DIR` constant to point to where your file is.
+# 
 # USAGE:
 #
-#   $ ./add-bins
-RUBY_VERSION = "#{ENV['RBENV_VERSION']}"
-SHIM_DIR = "#{ENV['HOME']}/.rbenv/versions/#{RUBY_VERSION}/"
-DOTFILES_BIN_DIR = "#{ENV['HOME']}/.dotfiles/bin"
+#   $ ./add-bins rimshot
+#   # => Add 'rimshot' executable system-wide
+#   
+#   $ ./add-bins rimshot open-repo
+#   # => Add 'rimshot' and 'open-repo' executable system-wide
+
+USR_LOCAL_BIN_DIR = "/usr/local/bin"
+BINS_DIR = "#{ENV['HOME']}/.dotfiles/bin" # CHANGE THIS!
 
 def append_puts_message
-  puts "\n\n≫"
+  puts "\n"
   yield
-  puts "≫\n\n"
+  puts ">_\n\n"
 end
 
 def make_bin_executable(bin)
-  append_puts_message { puts "💬 Please enter the your sudo password in order to make the '#{bin}' executable" }
-  spawn "cd #{DOTFILES_BIN_DIR}"
-  `sudo chmod +x #{bin}`
-  puts "≫ '#{bin}' is now chmod as exutable!"
+  append_puts_message { puts "💬 To make '#{bin}' executable, sudo is required. Do you even trust this script? (𓁹‿ 𓁹)" }
+  
+  bin_path = "#{BINS_DIR}/#{bin}"
+  
+  if system('sudo', 'chmod', '+x', bin_path)
+    puts "\n✅ '#{bin}' is now executable!"
+  else
+    puts "\n❌ Failed to make '#{bin}' executable"
+    exit 1
+  end
 end
 
 def symlink_bin(bin)
-  spawn "cd #{SHIM_DIR}/bin && sudo ln -s #{DOTFILES_BIN_DIR}/#{bin} '#{bin}'"
+  source = "#{BINS_DIR}/#{bin}"
+  target = "#{USR_LOCAL_BIN_DIR}/#{bin}"
+  
+  system('sudo', 'rm', '-f', target)
+  
+  if system('sudo', 'ln', '-s', source, target)
+    puts "\n✅ Symlinked '#{bin}' to #{USR_LOCAL_BIN_DIR}"
+  else
+    puts "\n❌ Failed to symlink '#{bin}'"
+    exit 1
+  end
 end
 
-append_puts_message { puts '💬 Which binaries would you like to add? Please list them, separated by a single space.' }
+def process(bin_list)
+  bin_list.split(' ').each do |bin|
+    make_bin_executable(bin)
+    symlink_bin(bin)
+  end
+end
+
+def rehash
+  system('rbenv', 'rehash') if system("which rbenv > /dev/null 2>&1")
+end
+
+append_puts_message { puts "💬 Which binary would you like to add? To add multiple binaries at once, please list them separated by a single space." }
+
 bin_list = gets.chomp
 
-bin_list.split(' ').each do |bin|
-  make_bin_executable(bin)
-  symlink_bin(bin)
-  spawn 'rbenv rehash'
-  puts '⚠️ Now please reload the terminal.'
-end
+process(bin_list)
+rehash
+
+puts "\n✅ Done! You may need to reload your terminal."
