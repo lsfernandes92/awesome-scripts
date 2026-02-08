@@ -6,30 +6,32 @@
 #
 #   $ ./rimshot
 #   # => plays a rimshot sound
-DOWNLOADS_DIRECTORY = "$HOME/Downloads"
+
+DOWNLOADS_DIRECTORY = "#{ENV['HOME']}/Downloads"
 SOUND_FILE_NAME = 'rimshot.mp3'
 
-def previously_downloaded_mp3?
-  !`cd #{DOWNLOADS_DIRECTORY} && find . -name #{SOUND_FILE_NAME}`.strip.empty?
+def mp3_previously_downloaded?
+  !`find #{DOWNLOADS_DIRECTORY} -name "#{SOUND_FILE_NAME}"`.strip.empty?
 end
 
-unless previously_downloaded_mp3?
-  spawn "curl https://instantrimshot.com/audio/rimshot.mp3 -o #{DOWNLOADS_DIRECTORY}/#{SOUND_FILE_NAME} 2>/dev/null"
-end
-
-def brew_installed?
-  !`which brew`.empty?
-end
-
-def mpg123_installed?
-  !`brew list | grep mpg123`.strip.empty?
-end
-
-if RbConfig::CONFIG['host_os'] =~ /darwin/
-  unless brew_installed?
-    puts '⚠️ No Homebrew found!'
+def download_or_skip
+  unless mp3_previously_downloaded?
+    system "curl https://instantrimshot.com/audio/rimshot.mp3 -o #{DOWNLOADS_DIRECTORY}/#{SOUND_FILE_NAME} 2>/dev/null"
   end
-
-  spawn "brew install mpg123" unless mpg123_installed?
-  spawn "cd #{DOWNLOADS_DIRECTORY} && mpg123 #{SOUND_FILE_NAME} 2>/dev/null"
 end
+
+def play
+  os = RbConfig::CONFIG['host_os']
+
+  case os
+  when /darwin|mac os/
+    spawn "nohup afplay #{DOWNLOADS_DIRECTORY}/#{SOUND_FILE_NAME} > /dev/null"
+  when /linux/
+    spawn "nohup aplay #{DOWNLOADS_DIRECTORY}/#{SOUND_FILE_NAME} > /dev/null"
+  else
+    puts "⚠️ Unsupported OS. This script only works on MacOS and Linux. ¯\\_(ツ)_/¯"
+  end
+end
+
+download_or_skip
+play
