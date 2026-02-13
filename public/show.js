@@ -5,15 +5,18 @@ const params = new URLSearchParams(window.location.search)
 const q = params.get("q")
 const description = params.get("description")
 const category = params.get("category")
+const pathParts = q.split("/")
+const folder = pathParts.length > 1 ? pathParts[0] : null
+const binName = pathParts.length > 1 ? pathParts[1] : q
 
 const binNameElement = document.querySelector(".bin-name")
 const binDescriptionElement = document.querySelector(".bin-description")
 const binCategoryElement = document.querySelector(".bin-category")
 const copyButton = document.querySelector(".copy-button")
 
-document.title += ` | ./${q}`
+document.title += ` | ./${binName}`
 
-binNameElement.innerHTML = `./${q}`
+binNameElement.innerHTML = `./${binName}`
 binDescriptionElement.innerHTML = description
 binCategoryElement.innerHTML = category
 
@@ -34,10 +37,11 @@ const copyToClipboard = () => {
 }
 copyButton.addEventListener("click", () => copyToClipboard())
 
-const showScriptContent = (binName) => {
+const showScriptContent = (folder, binName) => {
   const scriptContent = document.querySelector(".language-ruby")
+  const path = folder ? `${folder}/${binName}` : binName
 
-  fetch(`./bins/${binName}`)
+  fetch(`./bins/${path}`)
     .then(response => response.text())
     .then(data => {
       scriptContent.innerHTML = data
@@ -48,4 +52,4 @@ const showScriptContent = (binName) => {
 
 prependNavbarToContainer()
 appendFooterToContainer()
-showScriptContent(q)
+showScriptContent(folder, binName)

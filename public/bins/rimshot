@@ -6,7 +6,6 @@
 #
 #   $ ./rimshot
 #   # => plays a rimshot sound
-
 DOWNLOADS_DIRECTORY = "#{ENV['HOME']}/Downloads"
 SOUND_FILE_NAME = 'rimshot.mp3'
 

@@ -1,0 +1,117 @@
+#!/usr/bin/env ruby
+#
+# Make individual bin executable system-wide.
+#
+# This means the binary will be added to `/usr/local/bin`, which is in your
+# `$PATH` by default. Anything in your `$PATH` is available from anywhere in your
+# system.
+# 
+# USAGE:
+#   $ ./add-bins
+#   # => Follow the script instructions
+require 'bundler/inline'
+gemfile do
+  source 'https://rubygems.org'
+  gem 'gum'
+end
+
+require 'gum'
+
+class ProcessBin
+  USR_LOCAL_BIN_DIR = "/usr/local/bin"
+
+  def initialize(path)
+    @path = path
+    @bin = path.split("/").last
+  end
+
+  def process
+    make_executable
+    symlink
+  end
+
+  private
+
+  def make_executable
+    Gum::Log.warn("💬 To make '#{@bin}' executable, sudo is required.")
+
+    if proceed? && sudo_granted?
+      Gum.spin("Loading...", spinner: :dot, command: "sleep 1")
+      Gum::Log.info("✅ Bin '#{@bin}' is now executable!")
+    else
+      Gum::Log.error("❌ Failed to make '#{@bin}' executable")
+      exit 1
+    end
+  end
+
+  def proceed?
+    Gum.confirm("Do you even trust this script? (𓁹‿ 𓁹)", default: true)
+  end
+
+  def sudo_granted?
+    system("gum input --password --placeholder 'Please enter sudo password...' | sudo -S chmod +x #{@path}")
+  end
+
+  def symlink
+    target = "#{USR_LOCAL_BIN_DIR}/#{@bin}"
+    
+    system("sudo rm -f #{target}")
+    
+    if system("sudo ln -s #{@path} #{target}")
+      Gum.spin("Symlinking...", spinner: :dot, command: "sleep 1")
+      Gum::Log.info("✅ Symlinked '#{@bin}' to #{USR_LOCAL_BIN_DIR}")
+      Gum::Log.info("✅ Done! You may need to reload your terminal.")
+    else
+      Gum::Log.error("❌ Failed to symlink '#{@bin}'")
+      exit 1
+    end
+  end
+end
+
+def what_to_do
+  Gum.choose("✨ Add new bin (you’ll be prompted to select a bin file)", "🚪 Quit", header: "💬 What to do?\n")
+end
+
+def open_file_selector
+  Gum.file("#{ENV['HOME']}", all: true)
+end
+
+def show_description
+  puts Gum.format(<<~MARKDOWN, type: :markdown)
+  # WHAT THIS SCRIPT DO?
+  
+    It make individual bin executable system-wide.
+    
+    This means the binary will be added to
+    `/usr/local/bin`, which is in your
+    `$PATH` by default. 
+    
+    Anything in your $PATH is available
+    from anywhere in your system.
+
+  # USAGE:
+    ```
+    $ ./add-bins
+    # => Follow the script instructions
+    ```
+  ---
+  MARKDOWN
+end
+
+while true
+  show_description
+
+  if what_to_do == "🚪 Quit"
+    Gum::Log.info("👋 Goodbye then!") 
+    exit 1
+  else
+    bin_path = open_file_selector
+    
+    unless bin_path
+      Gum::Log.error("❌ No binary selected")
+      exit 1
+    end
+
+    ProcessBin.new(bin_path).process
+  end
+end
