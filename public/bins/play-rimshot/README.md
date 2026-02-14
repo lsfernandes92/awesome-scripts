@@ -1,10 +1,10 @@
-# >_./glamorous-add-bins
+# >_./rimshot
 
 ```text
  _______________________________________________________________________
 |[] README.md - awesome-scripts                                    F]|!"|
 |"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""|"|
-|awesome@scripts /bin > ./glamorous-add-bins                          | |
+|awesome@scripts /bin > ./rimshot                                     | |
 |                                                                     | |
 |                                                                     |_|
 |_____________________________________________________________________|/|
@@ -16,18 +16,7 @@
 </br>
 
 ## >_SHORT DESCRIPTION
-Make individual bin executable system-wide.
-
-</br>
-</br>
-</br>
-</br>
-
-## >_DESCRIPTION
-This means the binary will be added to `/usr/local/bin`, which is in your
-`$PATH` by default.
-
-Anything in your `$PATH` is available from anywhere in your system.
+Simply plays a rimshot sound.
 
 </br>
 </br>
@@ -43,7 +32,7 @@ Linux and MacOS
 </br>
 
 ## >_SOURCE
-https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/glamorous-system-wide-bin/
+https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/play-rimshot/
 
 </br>
 </br>
@@ -52,8 +41,8 @@ https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/glamorous
 
 ## >_USAGE
 ```bash
-$ ./add-bins
-# => Follow the script instructions
+$ ./rimshot
+# => plays a rimshot sound
 ```
 
 </br>

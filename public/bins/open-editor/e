@@ -5,8 +5,13 @@
 # This means that as I travel back and forth between editors, hey, I don't have
 # to re-learn any arcane commands. Neat.
 #
-# USAGE:
+# OS SUPPORT:
+#   Linux and MacOS
+#  
+# SOURCE:
+#   https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/open-editor/
 #
+# USAGE:
 #   $ e
 #   # => opens the current directory in your editor
 #

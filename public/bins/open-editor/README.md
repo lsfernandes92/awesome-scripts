@@ -1,10 +1,10 @@
-# >_./glamorous-add-bins
+# >_./e
 
 ```text
  _______________________________________________________________________
 |[] README.md - awesome-scripts                                    F]|!"|
 |"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""|"|
-|awesome@scripts /bin > ./glamorous-add-bins                          | |
+|awesome@scripts /bin > ./e                                           | |
 |                                                                     | |
 |                                                                     |_|
 |_____________________________________________________________________|/|
@@ -16,7 +16,7 @@
 </br>
 
 ## >_SHORT DESCRIPTION
-Make individual bin executable system-wide.
+Quick shortcut to an editor.
 
 </br>
 </br>
@@ -24,10 +24,8 @@ Make individual bin executable system-wide.
 </br>
 
 ## >_DESCRIPTION
-This means the binary will be added to `/usr/local/bin`, which is in your
-`$PATH` by default.
-
-Anything in your `$PATH` is available from anywhere in your system.
+This means that as I travel back and forth between editors, hey, I don't have 
+to re-learn any arcane commands. Neat.
 
 </br>
 </br>
@@ -43,7 +41,7 @@ Linux and MacOS
 </br>
 
 ## >_SOURCE
-https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/glamorous-system-wide-bin/
+https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/open-editor/
 
 </br>
 </br>
@@ -52,8 +50,14 @@ https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/glamorous
 
 ## >_USAGE
 ```bash
-$ ./add-bins
-# => Follow the script instructions
+$ ./e
+# => opens the current directory in your editor
+```
+
+```bash
+$ e .
+$ e /usr/local
+# => opens the specified directory in your editor
 ```
 
 </br>

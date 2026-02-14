@@ -15,7 +15,7 @@
 </br>
 </br>
 
-## >_Short description
+## >_SHORT DESCRIPTION
 Make individual bin executable system-wide.
 
 </br>
@@ -23,7 +23,7 @@ Make individual bin executable system-wide.
 </br>
 </br>
 
-## >_Description
+## >_DESCRIPTION
 This means the binary will be added to `/usr/local/bin`, which is in your
 `$PATH` by default. Anything in your $PATH is available from anywhere in your
 system.
@@ -39,7 +39,7 @@ by a single space.
 </br>
 </br>
 
-## >_OS support
+## >_OS SUPPORT
 Linux and MacOS
 
 </br>
@@ -47,7 +47,7 @@ Linux and MacOS
 </br>
 </br>
 
-## >_Source
+## >_SOURCE
 https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/system-wide-bin/
 
 </br>
@@ -55,7 +55,7 @@ https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/system-wi
 </br>
 </br>
 
-## >_Usage
+## >_USAGE
 ```bash
 $ ./add-bins
 💬 Which binary would you like to add? To add multiple binaries at once, please list them separated by a single space.

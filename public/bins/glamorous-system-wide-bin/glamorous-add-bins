@@ -6,6 +6,12 @@
 # `$PATH` by default. Anything in your `$PATH` is available from anywhere in your
 # system.
 # 
+# OS SUPPORT:
+#   Linux and MacOS
+#  
+# SOURCE:
+#   https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/system-wide-bin/add-bins
+#   
 # USAGE:
 #   $ ./add-bins
 #   # => Follow the script instructions

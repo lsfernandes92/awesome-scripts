@@ -13,12 +13,12 @@ const binsJson = [
     category:   "glamorous",
   },
   {
-    name: "rimshot",
+    name: "play-rimshot/rimshot",
     description: "Simply plays a rimshot sound.",
     category: "useless",
   },
   {
-    name: "e",
+    name: "open-editor/e",
     description: "Quick shortcut to an editor.",
     category: "productivity",
   },

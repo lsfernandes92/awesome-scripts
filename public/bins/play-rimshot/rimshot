@@ -2,8 +2,13 @@
 #
 # Simply plays a rimshot sound.
 #
-# USAGE:
+# OS SUPPORT:
+#   Linux and MacOS
+#  
+# SOURCE:
+#   https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/play-rimshot/
 #
+# USAGE:
 #   $ ./rimshot
 #   # => plays a rimshot sound
 DOWNLOADS_DIRECTORY = "#{ENV['HOME']}/Downloads"
