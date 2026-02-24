@@ -11,8 +11,6 @@
 # USAGE:
 #   $ ./funfact
 #   # => Outputs a random fun fact in your terminal
-#   $ ./funfact --help
-#   # => Outputs help message
 #
 # OS SUPPORT:
 #   Linux and MacOS
@@ -28,11 +26,8 @@ end
 require 'json'
 require 'gum'
 
-SCRIPT_NAME = Gum.style(
-  './funfact',
-  foreground: 1,
-)
 USELESS_API_URL = "https://useless.dotenv.dev/api/random"
+SCRIPT_NAME = Gum.style('./funfact', foreground: 1)
 
 def show_help
   help_text = <<~HELP
@@ -56,8 +51,6 @@ def show_help
         # USAGE:
               $ ./funfact
               # => Outputs a random fun fact in your terminal
-              $ ./funfact --help
-              # => Outputs help message
         
         # OS SUPPORT:
               Linux and MacOS
@@ -80,7 +73,9 @@ string_response = `curl #{USELESS_API_URL} 2>/dev/null`
 hash_response = JSON.parse(string_response)
 fact = hash_response.dig('fact')
 
-puts Gum.style(
-  "ᩭᘏᗢ ˎˊ˗#{fact} ᗢᘏᓗ",
-  foreground: 2,
-)
+Gum.spin("Fetching...", spinner: :dot) do
+  puts Gum.style(
+    "ᩭᘏᗢ ˎˊ˗#{fact} ᗢᘏᓗ",
+    foreground: 2,
+  )
+end
