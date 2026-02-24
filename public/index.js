@@ -22,6 +22,11 @@ const binsJson = [
     description: "Quick shortcut to an editor.",
     category: "productivity",
   },
+  {
+    name: "funfact/funfact",
+    description: "Outputs a random fun fact in your terminal.",
+    category: "useless",
+  },
 ];
 const binsContainer = document.querySelector(".bins-container");
 const categoriesElements = document.querySelectorAll(".category-item");

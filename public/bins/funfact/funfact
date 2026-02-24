@@ -1,0 +1,86 @@
+#!/usr/bin/env ruby
+#
+# Outputs a random fun fact in your terminal
+#
+# When it gets run it simply outputs a 
+# random fun fact in your terminal.
+#
+# OPTIONS:
+#   --help, -h          Show this help message
+#
+# USAGE:
+#   $ ./funfact
+#   # => Outputs a random fun fact in your terminal
+#   $ ./funfact --help
+#   # => Outputs help message
+#
+# OS SUPPORT:
+#   Linux and MacOS
+#  
+# SOURCE:
+#   https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/funfact/
+require 'bundler/inline'
+gemfile do
+  source 'https://rubygems.org'
+  gem 'gum'
+end
+
+require 'json'
+require 'gum'
+
+SCRIPT_NAME = Gum.style(
+  './funfact',
+  foreground: 1,
+)
+USELESS_API_URL = "https://useless.dotenv.dev/api/random"
+
+def show_help
+  help_text = <<~HELP
+    #{
+      Gum.format(<<~HEADER, type: :markdown)
+        # awesome@scripts > /bins > #{SCRIPT_NAME}
+      HEADER
+    }
+  
+    #{
+      Gum.format(<<~MAIN, type: :markdown)
+        # WHAT THIS SCRIPT DO?
+              Outputs a random fun fact in your terminal
+            
+              When it gets run it simply outputs a 
+              random fun fact in your terminal.
+  
+        # OPTIONS:
+              --help, -h          Show this help message
+
+        # USAGE:
+              $ ./funfact
+              # => Outputs a random fun fact in your terminal
+              $ ./funfact --help
+              # => Outputs help message
+        
+        # OS SUPPORT:
+              Linux and MacOS
+        
+        # SOURCE:
+              https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/funfact/
+      MAIN
+    }  
+  HELP
+  
+  Gum.pager(help_text, soft_wrap: true)
+  exit 0
+end
+
+if ARGV.include?('--help') || ARGV.include?('-h')
+  show_help
+end
+
+string_response = `curl #{USELESS_API_URL} 2>/dev/null`
+hash_response = JSON.parse(string_response)
+fact = hash_response.dig('fact')
+
+puts Gum.style(
+  "ᩭᘏᗢ ˎˊ˗#{fact} ᗢᘏᓗ",
+  foreground: 2,
+)

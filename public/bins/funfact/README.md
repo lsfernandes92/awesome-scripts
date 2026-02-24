@@ -1,10 +1,10 @@
-# >_./e
+# >_./funfact
 
 ```text
  _______________________________________________________________________
 |[] awesome-scripts                                            [Q][_][F]|
 |"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""|"|
-|awesome@scripts /bin > ./e                                           | |
+|awesome@scripts /bin > ./funfact                                     | |
 |                                                                     |_|
 |_____________________________________________________________________|/|
 ```
@@ -15,7 +15,7 @@
 </br>
 
 ## >_SHORT DESCRIPTION
-Quick shortcut to an editor.
+Outputs a random fun fact in your terminal.
 
 </br>
 </br>
@@ -23,8 +23,15 @@ Quick shortcut to an editor.
 </br>
 
 ## >_DESCRIPTION
-This means that as I travel back and forth between editors, hey, I don't have 
-to re-learn any arcane commands. Neat.
+When you run it, it outputs a random fun fact to your terminal.
+
+</br>
+</br>
+</br>
+</br>
+
+## OPTIONS
+`--help`, `-h`          Show this help message
 
 </br>
 </br>
@@ -33,13 +40,12 @@ to re-learn any arcane commands. Neat.
 
 ## >_USAGE
 ```bash
-$ ./e
-# => opens the current directory in your editor
+$ ./funfact
+# => Outputs a random fun fact in your terminal
 ```
 ```bash
-$ e .
-$ e /usr/local
-# => opens the specified directory in your editor
+$ ./funfact --help
+# => Outputs help message
 ```
 
 </br>
@@ -56,4 +62,4 @@ Linux and MacOS
 </br>
 
 ## >_SOURCE
-https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/open-editor/
+https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/funfact/

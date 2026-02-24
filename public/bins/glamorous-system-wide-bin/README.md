@@ -2,10 +2,9 @@
 
 ```text
  _______________________________________________________________________
-|[] README.md - awesome-scripts                                    F]|!"|
+|[] awesome-scripts                                            [Q][_][F]|
 |"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""|"|
 |awesome@scripts /bin > ./glamorous-add-bins                          | |
-|                                                                     | |
 |                                                                     |_|
 |_____________________________________________________________________|/|
 ```
@@ -34,22 +33,6 @@ Anything in your `$PATH` is available from anywhere in your system.
 </br>
 </br>
 
-## >_OS SUPPORT
-Linux and MacOS
-
-</br>
-</br>
-</br>
-</br>
-
-## >_SOURCE
-https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/glamorous-system-wide-bin/
-
-</br>
-</br>
-</br>
-</br>
-
 ## >_USAGE
 ```bash
 $ ./add-bins
@@ -60,3 +43,14 @@ $ ./add-bins
 </br>
 </br>
 </br>
+
+## >_OS SUPPORT
+Linux and MacOS
+
+</br>
+</br>
+</br>
+</br>
+
+## >_SOURCE
+https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/glamorous-system-wide-bin/

@@ -2,10 +2,9 @@
 
 ```text
  _______________________________________________________________________
-|[] README.md - awesome-scripts                                    F]|!"|
+|[] awesome-scripts                                            [Q][_][F]|
 |"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""|"|
 |awesome@scripts /bin > ./add-bins                                    | |
-|                                                                     | |
 |                                                                     |_|
 |_____________________________________________________________________|/|
 ```
@@ -39,22 +38,6 @@ by a single space.
 </br>
 </br>
 
-## >_OS SUPPORT
-Linux and MacOS
-
-</br>
-</br>
-</br>
-</br>
-
-## >_SOURCE
-https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/system-wide-bin/
-
-</br>
-</br>
-</br>
-</br>
-
 ## >_USAGE
 ```bash
 $ ./add-bins
@@ -62,7 +45,6 @@ $ ./add-bins
 >_rimshot
 # => Add 'rimshot' executable system-wide
 ```
-
 ```bash
 $ ./add-bins
 💬 Which binary would you like to add? To add multiple binaries at once, please list them separated by a single space.
@@ -74,3 +56,14 @@ $ ./add-bins
 </br>
 </br>
 </br>
+
+## >_OS SUPPORT
+Linux and MacOS
+
+</br>
+</br>
+</br>
+</br>
+
+## >_SOURCE
+https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/system-wide-bin/

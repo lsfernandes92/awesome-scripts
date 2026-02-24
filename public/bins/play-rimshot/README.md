@@ -2,10 +2,9 @@
 
 ```text
  _______________________________________________________________________
-|[] README.md - awesome-scripts                                    F]|!"|
+|[] awesome-scripts                                            [Q][_][F]|
 |"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""|"|
 |awesome@scripts /bin > ./rimshot                                     | |
-|                                                                     | |
 |                                                                     |_|
 |_____________________________________________________________________|/|
 ```
@@ -23,22 +22,6 @@ Simply plays a rimshot sound.
 </br>
 </br>
 
-## >_OS SUPPORT
-Linux and MacOS
-
-</br>
-</br>
-</br>
-</br>
-
-## >_SOURCE
-https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/play-rimshot/
-
-</br>
-</br>
-</br>
-</br>
-
 ## >_USAGE
 ```bash
 $ ./rimshot
@@ -49,3 +32,14 @@ $ ./rimshot
 </br>
 </br>
 </br>
+
+## >_OS SUPPORT
+Linux and MacOS
+
+</br>
+</br>
+</br>
+</br>
+
+## >_SOURCE
+https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/play-rimshot/
