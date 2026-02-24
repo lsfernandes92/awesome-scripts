@@ -35,7 +35,7 @@ Anything in your `$PATH` is available from anywhere in your system.
 
 ## >_USAGE
 ```bash
-$ ./add-bins
+$ ./glamorous-add-bins
 # => Follow the script instructions
 ```
 

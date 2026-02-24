@@ -2,19 +2,22 @@
 #
 # Make individual bin executable system-wide.
 #
-# This means the binary will be added to `/usr/local/bin`, which is in your
-# `$PATH` by default. Anything in your `$PATH` is available from anywhere in your
-# system.
+# This means the binary will be added to
+# `/usr/local/bin`, which is in your `$PATH`
+# by default.
 # 
+# Anything in your `$PATH` is available from
+# anywhere in your system.
+# 
+# USAGE:
+#   $ ./glamorous-add-bins
+#   # => Follow the script instructions
+#   
 # OS SUPPORT:
 #   Linux and MacOS
 #  
 # SOURCE:
 #   https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/glamorous-system-wide-bin/
-#   
-# USAGE:
-#   $ ./add-bins
-#   # => Follow the script instructions
 require 'bundler/inline'
 gemfile do
   source 'https://rubygems.org'
@@ -75,40 +78,64 @@ class ProcessBin
 end
 
 def what_to_do
-  Gum.choose("✨ Add new bin (you’ll be prompted to select a bin file)", "🚪 Quit", header: "💬 What to do?\n")
+  Gum.choose("✨ Add new bin (you’ll be prompted to select a bin file)", "🚪 Quit", "ℹ️ Help", header: "💬 What to do?\n")
 end
 
 def open_file_selector
   Gum.file("#{ENV['HOME']}", all: true)
 end
 
-def show_description
-  puts Gum.format(<<~MARKDOWN, type: :markdown)
-  # WHAT THIS SCRIPT DO?
+SCRIPT_NAME = Gum.style('./glamorous-add-bins', foreground: 1)
+def show_help
+  help_text = <<~HELP
+    #{
+      Gum.format(<<~HEADER, type: :markdown)
+        # awesome@scripts > /bins > #{SCRIPT_NAME}
+      HEADER
+    }
   
-    It make individual bin executable system-wide.
+    #{
+      Gum.format(<<~MAIN, type: :markdown)
+        # WHAT THIS SCRIPT DO?
+              It make individual bin executable system-wide.
     
-    This means the binary will be added to
-    `/usr/local/bin`, which is in your
-    `$PATH` by default. 
-    
-    Anything in your $PATH is available
-    from anywhere in your system.
+              This means the binary will be added to
+              `/usr/local/bin`, which is in your `$PATH`
+              by default. 
+              
+              Anything in your `$PATH` is available from
+              anywhere in your system.
+  
+        # OPTIONS:
+              --help, -h          Show this help message
 
-  # USAGE:
-    ```
-    $ ./add-bins
-    # => Follow the script instructions
-    ```
-  ---
-  MARKDOWN
+        # USAGE:
+              $ ./glamorous-add-bins
+              # => Follow the script instructions
+        
+        # OS SUPPORT:
+              Linux and MacOS
+        
+        # SOURCE:
+              https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/glamorous-system-wide-bin/
+      MAIN
+    }  
+  HELP
+  
+  Gum.pager(help_text, soft_wrap: true)
+end
+
+if ARGV.include?('--help') || ARGV.include?('-h')
+  show_help
+  exit 0
 end
 
 while true
-  show_description
-
-  if what_to_do == "🚪 Quit"
-    Gum::Log.info("👋 Goodbye then!") 
+  case what_to_do
+  when "ℹ️ Help"
+    show_help
+  when "🚪 Quit"
+    Gum::Log.info("Goodbye then! 👋") 
     exit 1
   else
     bin_path = open_file_selector
