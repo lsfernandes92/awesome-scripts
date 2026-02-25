@@ -31,6 +31,14 @@ to re-learn any arcane commands. Neat!
 </br>
 </br>
 
+## OPTIONS
+`--help`, `-h`          Show this help message
+
+</br>
+</br>
+</br>
+</br>
+
 ## >_USAGE
 ```bash
 $ ./e
@@ -56,4 +64,4 @@ Linux and MacOS
 </br>
 
 ## >_SOURCE
-https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/open-editor/
+https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/open-editor-v2/

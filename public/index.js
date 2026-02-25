@@ -19,7 +19,12 @@ const binsJson = [
   },
   {
     name: "open-editor/e",
-    description: "Quick shortcut to an editor.",
+    description: "Quick shortcut to an editor (bash script).",
+    category: "productivity",
+  },
+  {
+    name: "open-editor-v2/ee",
+    description: "Quick shortcut to an editor (ruby script).",
     category: "productivity",
   },
   {

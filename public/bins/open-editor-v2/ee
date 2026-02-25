@@ -1,0 +1,79 @@
+#!/usr/bin/env ruby
+#
+# Quick shortcut to an editor.
+#
+# This means that as I travel back and
+# forth between editors, hey, I don't
+# have to re-learn any arcane commands.
+#
+# Neat!
+#
+# USAGE:
+#   $ e
+#   # => opens the current directory in your editor
+#
+#   $ e .
+#   $ e /usr/local
+#   # => opens the specified directory in your editor
+#
+# OS SUPPORT:
+#   Linux and MacOS
+#  
+# SOURCE:
+#   https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/open-editor-v2/
+require 'bundler/inline'
+gemfile do
+  source 'https://rubygems.org'
+  gem 'gum'
+end
+
+SCRIPT_NAME = Gum.style('./e', foreground: 1)
+def show_help
+  header = <<~HEADER
+    # awesome@scripts > /bins > #{SCRIPT_NAME}
+  HEADER
+  main = <<~MAIN
+    # WHAT THIS SCRIPT DO?
+          Quick shortcut to an editor.
+              
+          This means that as I travel back and
+          forth between editors, hey, I don't
+          have to re-learn any arcane commands.
+          
+          Neat!
+
+    # OPTIONS:
+          --help, -h          Show this help message
+
+    # USAGE:
+          $ e
+          # => opens the current directory in your editor
+          
+          $ e .
+          $ e /usr/local
+          # => opens the specified directory in your editor
+    
+    # OS SUPPORT:
+          Linux and MacOS
+    
+    # SOURCE:
+          https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/open-editor-v2/
+  MAIN
+
+  help_text = <<~HELP
+    #{Gum.format(header, type: :markdown)}
+    #{Gum.format(main, type: :markdown)}
+  HELP
+  
+  Gum.pager(help_text, soft_wrap: true)
+  exit 0
+end
+
+if ARGV.include?('--help') || ARGV.include?('-h')
+  show_help
+  exit 0
+end
+
+EDITOR = ENV['EDITOR']
+PATH = ARGV[0] || '.'
+exec(EDITOR, PATH)
