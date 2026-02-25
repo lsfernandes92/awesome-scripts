@@ -10,14 +10,14 @@
 # anywhere in your system.
 # 
 # USAGE:
-#   $ ./glamorous-add-bins
+#   $ ./show-off
 #   # => Follow the script instructions
 #   
 # OS SUPPORT:
 #   Linux and MacOS
 #  
 # SOURCE:
-#   https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/glamorous-system-wide-bin/
+#   https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/show-off/
 require 'bundler/inline'
 gemfile do
   source 'https://rubygems.org'
@@ -69,7 +69,7 @@ class ProcessBin
     if system("sudo ln -s #{@path} #{target}")
       Gum.spin("Symlinking...", spinner: :dot, command: "sleep 1")
       Gum::Log.info("✅ Symlinked '#{@bin}' to #{USR_LOCAL_BIN_DIR}")
-      Gum::Log.info("✅ Done! You may need to reload your terminal.")
+      Gum::Log.info("✅ Done! You may need to reload your terminal. ↻")
     else
       Gum::Log.error("❌ Failed to symlink '#{@bin}'")
       exit 1
@@ -78,50 +78,79 @@ class ProcessBin
 end
 
 def what_to_do
-  Gum.choose("✨ Add new bin (you’ll be prompted to select a bin file)", "🚪 Quit", "ℹ️ Help", header: "💬 What to do?\n")
+  Gum.choose(
+    "✨ Show bin off (you’ll be prompted to select a bin file)",
+    "🤔 What's a bin BTW?",
+    "ℹ️ Are you lost?",
+    "🚪 I'm out!",
+    header: "💬 Let me guess...\n"
+  )
 end
 
 def open_file_selector
   Gum.file("#{ENV['HOME']}", all: true)
 end
 
-SCRIPT_NAME = Gum.style('./glamorous-add-bins', foreground: 1)
-def show_help
-  help_text = <<~HELP
-    #{
-      Gum.format(<<~HEADER, type: :markdown)
-        # awesome@scripts > /bins > #{SCRIPT_NAME}
-      HEADER
-    }
-  
-    #{
-      Gum.format(<<~MAIN, type: :markdown)
-        # WHAT THIS SCRIPT DO?
-              It make individual bin executable system-wide.
-    
-              This means the binary will be added to
-              `/usr/local/bin`, which is in your `$PATH`
-              by default. 
-              
-              Anything in your `$PATH` is available from
-              anywhere in your system.
-  
-        # OPTIONS:
-              --help, -h          Show this help message
+def show_whats_bin_btw
+  main = <<~MAIN
+    # WHAT'S BIN BTW?
 
-        # USAGE:
-              $ ./glamorous-add-bins
-              # => Follow the script instructions
-        
-        # OS SUPPORT:
-              Linux and MacOS
-        
-        # SOURCE:
-              https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/glamorous-system-wide-bin/
-      MAIN
-    }  
+    _To make things easier, here,
+    the terms **script**, **executable**,
+    **bin** and **binary** mean the same 
+    thing._
+
+    These scripts aim to automate
+    tasks and set shortcuts
+    whether for productivity or fun. 
+    
+    They are like **executables**
+    that you can run by calling
+    the script name.  
+  MAIN
+
+  help_text = <<~HELP
+    #{Gum.format(main, type: :markdown)}
   HELP
-  
+
+  Gum.pager(help_text, soft_wrap: true)
+end
+
+SCRIPT_NAME = Gum.style('./show-off', foreground: 1)
+def show_help
+  header = <<~HEADER
+    # awesome@scripts > /bins > #{SCRIPT_NAME}
+  HEADER
+  main = <<~MAIN
+    # WHAT THIS SCRIPT DO?
+          It make individual bin executable system-wide.
+
+          This means the binary will be added to
+          `/usr/local/bin`, which is in your `$PATH`
+          by default. 
+          
+          Anything in your `$PATH` is available from
+          anywhere in your system.
+
+    # OPTIONS:
+          --help, -h          Show this help message
+
+    # USAGE:
+          $ ./show-off
+          # => Follow the script instructions
+    
+    # OS SUPPORT:
+          Linux and MacOS
+    
+    # SOURCE:
+          https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/show-off/
+  MAIN
+
+  help_text = <<~HELP
+    #{Gum.format(header, type: :markdown)}
+    #{Gum.format(main, type: :markdown)}
+  HELP
+
   Gum.pager(help_text, soft_wrap: true)
 end
 
@@ -132,9 +161,11 @@ end
 
 while true
   case what_to_do
-  when "ℹ️ Help"
+  when "🤔 What's a bin BTW?"
+    show_whats_bin_btw
+  when "ℹ️ Are you lost?"
     show_help
-  when "🚪 Quit"
+  when "🚪 I'm out!"
     Gum::Log.info("Goodbye then! 👋") 
     exit 1
   else

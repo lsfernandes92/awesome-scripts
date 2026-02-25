@@ -8,7 +8,7 @@ const binsJson = [
     category: "utils",
   },
   {
-    name: "glamorous-system-wide-bin/glamorous-add-bins",
+    name: "show-off/show-off",
     description: "Make individual bin executable system-wide.",
     category:   "glamorous",
   },

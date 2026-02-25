@@ -1,10 +1,10 @@
-# >_./glamorous-add-bins
+# >_./show-off
 
 ```text
  _______________________________________________________________________
 |[] awesome-scripts                                            [Q][_][F]|
 |"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""|"|
-|awesome@scripts /bin > ./glamorous-add-bins                          | |
+|awesome@scripts /bin > ./show-off                                    | |
 |                                                                     |_|
 |_____________________________________________________________________|/|
 ```
@@ -26,7 +26,7 @@ Make individual bin executable system-wide.
 This means the binary will be added to `/usr/local/bin`, which is in your
 `$PATH` by default.
 
-Anything in your `$PATH` is available from anywhere in your system.
+Anything in your `$PATH` is available from **anywhere** in your system.
 
 </br>
 </br>
@@ -35,7 +35,7 @@ Anything in your `$PATH` is available from anywhere in your system.
 
 ## >_USAGE
 ```bash
-$ ./glamorous-add-bins
+$ ./show-off          
 # => Follow the script instructions
 ```
 
@@ -53,4 +53,4 @@ Linux and MacOS
 </br>
 
 ## >_SOURCE
-https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/glamorous-system-wide-bin/
+https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/show-off/
