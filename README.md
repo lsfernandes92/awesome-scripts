@@ -1,10 +1,10 @@
 # >_ Awesome Scripts
 
-This website contains a modest collection of terminal **scripts** I've written. Built with **HTML** + plain **JS** and **CSS**.
+This website contains a modest collection of **scripts** I've written. Built with **HTML** + plain **JS** and **CSS**.
 
-These scripts aim to **automate** tasks and set shortcuts whether for productivity or fun. They are like **executables** that you can run from the terminal by typing the script name.
+_To make things easier, here, the terms **script**, **executable**, **bin** and **binary** mean the same thing._
 
-To make things easier, here, the terms **script**, **executable**, and **binary** mean the same thing.
+These scripts aim to automate tasks and set shortcuts whether for productivity or fun. They are like **executables** that you can run by calling the script name.
 
 ```text
                        .,,uod8B8bou,,.
@@ -45,7 +45,7 @@ To make things easier, here, the terms **script**, **executable**, and **binary*
 </br>
 
 ## >_FAQ
-### What's a terminal script?
+### What's a script BTW?
 
 > It's a file containing a series of terminal **commands** that your shell can execute.
 
