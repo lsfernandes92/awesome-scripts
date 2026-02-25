@@ -30,35 +30,33 @@ USELESS_API_URL = "https://useless.dotenv.dev/api/random"
 SCRIPT_NAME = Gum.style('./funfact', foreground: 1)
 
 def show_help
-  help_text = <<~HELP
-    #{
-      Gum.format(<<~HEADER, type: :markdown)
-        # awesome@scripts > /bins > #{SCRIPT_NAME}
-      HEADER
-    }
-  
-    #{
-      Gum.format(<<~MAIN, type: :markdown)
-        # WHAT THIS SCRIPT DO?
-              Outputs a random fun fact in your terminal
-            
-              When it gets run it simply outputs a 
-              random fun fact in your terminal.
-  
-        # OPTIONS:
-              --help, -h          Show this help message
+  header = <<~HEADER
+    # awesome@scripts > /bins > #{SCRIPT_NAME}
+  HEADER
+  main = <<~MAIN
+    # WHAT THIS SCRIPT DO?
+          Outputs a random fun fact in your terminal
+        
+          When it gets run it simply outputs a 
+          random fun fact in your terminal.
 
-        # USAGE:
-              $ ./funfact
-              # => Outputs a random fun fact in your terminal
-        
-        # OS SUPPORT:
-              Linux and MacOS
-        
-        # SOURCE:
-              https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/funfact/
-      MAIN
-    }  
+    # OPTIONS:
+          --help, -h          Show this help message
+
+    # USAGE:
+          $ ./funfact
+          # => Outputs a random fun fact in your terminal
+    
+    # OS SUPPORT:
+          Linux and MacOS
+    
+    # SOURCE:
+          https://github.com/lsfernandes92/awesome-scripts/tree/main/public/bins/funfact/
+  MAIN
+
+  help_text = <<~HELP
+    #{Gum.format(header, type: :markdown)}
+    #{Gum.format(main, type: :markdown)}
   HELP
   
   Gum.pager(help_text, soft_wrap: true)
